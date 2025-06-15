@@ -13,15 +13,15 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 export async function fetchRevenue() {
   try {
-    // Artificially delay a response for demo purposes.
-    // Don't do this in production :)
+    // 데모 목적을 위해 일부러 응답을 지연시킵니다.
+    // 실서비스에서는 이렇게 하지 마세요 :)
 
-    // console.log('Fetching revenue data...');
+    // console.log('매출 데이터를 가져오는 중...');
     // await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue[]>`SELECT * FROM revenue`;
 
-    // console.log('Data fetch completed after 3 seconds.');
+    // console.log('3초 후 데이터 가져오기가 완료되었습니다.');
 
     return data;
   } catch (error) {
@@ -52,9 +52,9 @@ export async function fetchLatestInvoices() {
 
 export async function fetchCardData() {
   try {
-    // You can probably combine these into a single SQL query
-    // However, we are intentionally splitting them to demonstrate
-    // how to initialize multiple queries in parallel with JS.
+    // 하나의 SQL 쿼리로 합칠 수도 있지만,
+    // 예시를 위해 일부러 여러 쿼리로 나누었습니다.
+    // JavaScript에서 여러 쿼리를 병렬로 실행하는 방법을 보여주기 위함입니다.
     const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
     const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
     const invoiceStatusPromise = sql`SELECT
@@ -156,7 +156,7 @@ export async function fetchInvoiceById(id: string) {
 
     const invoice = data.map((invoice) => ({
       ...invoice,
-      // Convert amount from cents to dollars
+      // 금액을 센트 단위에서 달러 단위로 변환
       amount: invoice.amount / 100,
     }));
 

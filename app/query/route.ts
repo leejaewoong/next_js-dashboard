@@ -1,4 +1,4 @@
-// import postgres from 'postgres';
+// postgres 모듈을 불러옵니다
 
 // const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 

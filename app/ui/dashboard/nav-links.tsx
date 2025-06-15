@@ -4,8 +4,8 @@ import {
   DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline';
 
-// Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
+// 사이드바에 표시할 링크 목록입니다.
+// 애플리케이션 규모에 따라 이 데이터는 데이터베이스에 저장될 수 있습니다.
 const links = [
   { name: 'Home', href: '/dashboard', icon: HomeIcon },
   {

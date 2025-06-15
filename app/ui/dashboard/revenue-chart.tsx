@@ -3,8 +3,8 @@ import { CalendarIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 import { Revenue } from '@/app/lib/definitions';
 
-// This component is representational only.
-// For data visualization UI, check out:
+// 이 컴포넌트는 예시용입니다.
+// 데이터 시각화 UI는 다음 링크들을 참고하세요:
 // https://www.tremor.so/
 // https://www.chartjs.org/
 // https://airbnb.io/visx/
@@ -15,7 +15,7 @@ export default async function RevenueChart({
   revenue: Revenue[];
 }) {
   const chartHeight = 350;
-  // NOTE: Uncomment this code in Chapter 7
+  // 참고: 7장에서 이 코드를 주석 해제하세요
 
   // const { yAxisLabels, topLabel } = generateYAxis(revenue);
 
@@ -28,7 +28,7 @@ export default async function RevenueChart({
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Recent Revenue
       </h2>
-      {/* NOTE: Uncomment this code in Chapter 7 */}
+      {/* 참고: 7장에서 이 코드를 주석 해제하세요 */}
 
       {/* <div className="rounded-xl bg-gray-50 p-4">
         <div className="sm:grid-cols-13 mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 md:gap-4">

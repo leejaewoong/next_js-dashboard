@@ -22,8 +22,8 @@ export const formatDateToLocal = (
 };
 
 export const generateYAxis = (revenue: Revenue[]) => {
-  // Calculate what labels we need to display on the y-axis
-  // based on highest record and in 1000s
+  // y축에 표시할 레이블을 계산합니다.
+  // 가장 큰 값 기준으로 1000단위로 표시합니다.
   const yAxisLabels = [];
   const highestRecord = Math.max(...revenue.map((month) => month.revenue));
   const topLabel = Math.ceil(highestRecord / 1000) * 1000;
@@ -36,27 +36,27 @@ export const generateYAxis = (revenue: Revenue[]) => {
 };
 
 export const generatePagination = (currentPage: number, totalPages: number) => {
-  // If the total number of pages is 7 or less,
-  // display all pages without any ellipsis.
+  // 페이지 수가 7 이하라면
+  // 모든 페이지 번호를 생략 없이 보여줍니다.
   if (totalPages <= 7) {
     return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
-  // If the current page is among the first 3 pages,
-  // show the first 3, an ellipsis, and the last 2 pages.
+  // 현재 페이지가 처음 3페이지 안에 있으면
+  // 처음 3개와 말줄임표, 마지막 2개 페이지를 보여줍니다.
   if (currentPage <= 3) {
     return [1, 2, 3, '...', totalPages - 1, totalPages];
   }
 
-  // If the current page is among the last 3 pages,
-  // show the first 2, an ellipsis, and the last 3 pages.
+  // 현재 페이지가 마지막에서 3페이지 이내라면
+  // 처음 2개와 말줄임표, 마지막 3개 페이지를 보여줍니다.
   if (currentPage >= totalPages - 2) {
     return [1, 2, '...', totalPages - 2, totalPages - 1, totalPages];
   }
 
-  // If the current page is somewhere in the middle,
-  // show the first page, an ellipsis, the current page and its neighbors,
-  // another ellipsis, and the last page.
+  // 그 외의 경우 현재 페이지가 중간에 위치하므로
+  // 첫 페이지와 말줄임표, 현재 페이지와 양옆 페이지,
+  // 또 다른 말줄임표와 마지막 페이지를 보여줍니다.
   return [
     1,
     '...',
