@@ -34,14 +34,6 @@ async function seedInvoices() {
   }
 }
 
-async function seedInvoces(){
-  for (const invoice of invoices) {
-    await prisma.invoice.create({
-      data: invoice
-    });
-  }
-}
-
 async function seedRevenue() {
   for (const rev of revenue) {
     await prisma.revenue.create({
@@ -52,12 +44,12 @@ async function seedRevenue() {
 
 export async function GET() {
   try {
-    await prisma.$transaction([
-      prisma.user.deleteMany(),
-      prisma.customer.deleteMany(),
-      prisma.invoice.deleteMany(),
-      prisma.revenue.deleteMany(),
-    ]);
+    // 이미 데이터가 존재하면 시드 작업을 실행하지 않음
+    const exists = await prisma.user.count();
+
+    if (exists > 0) {
+      return Response.json({ message: 'Database already seeded' });
+    }
     
     await seedUsers();
     await seedCustomers();

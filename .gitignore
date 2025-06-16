@@ -37,6 +37,5 @@ next-env.d.ts
 
 #db
 /.env
-/generated/prisma
 .vercel
 .env*.local
