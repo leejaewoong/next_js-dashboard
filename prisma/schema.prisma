@@ -34,6 +34,6 @@ model Invoice {
 }
   
 model Revenue {  
-  month        String
+  month        String @unique
   revenue      Int
 }
