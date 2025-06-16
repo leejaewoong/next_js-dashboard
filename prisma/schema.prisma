@@ -36,3 +36,4 @@ model Revenue {
   month        String @unique
   revenue      Int
 }
+

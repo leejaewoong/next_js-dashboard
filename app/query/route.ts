@@ -1,6 +1,6 @@
-import { prismaclient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client"
 
-const prisma = new prismaclient();
+const prisma = new PrismaClient()
 
 export async function GET() {
   try {
@@ -9,10 +9,10 @@ export async function GET() {
       name: string;
     }[]>`
       SELECT Invoice.amount, Customer.name
-        FROM Invoice
-        JOIN Customer ON Invoice.customer_id = Customer.id
-        WHERE Invoice.amount = 666;
-      `;
+      FROM Invoice
+      JOIN Customer ON Invoice.customer_id = Customer.id
+      WHERE Invoice.amount = 666;
+    `;
   
       return Response.json(data);
     } catch (error) {
