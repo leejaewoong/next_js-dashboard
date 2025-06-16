@@ -33,3 +33,7 @@ model Invoice {
   date         String
 }
   
+model Revenue {  
+  month        String
+  revenue      Int
+}
