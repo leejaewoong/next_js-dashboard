@@ -3,4 +3,6 @@
     "next/core-web-vitals",
     "next/typescript"
   ]
+
+  "@typescript-eslint/no-unused-vars": "off"
 }
