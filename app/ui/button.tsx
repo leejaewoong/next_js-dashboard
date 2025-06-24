@@ -17,4 +17,3 @@ export function Button({ children, className, ...rest }: ButtonProps) {
     </button>
   );
 }
-
